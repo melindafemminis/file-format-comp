@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <!-- Loading div displayed when form is loading -->
+<div id="the-loading-div" style="display: none;">
+    <br>
+    <br>
+    <br>
+    <img src="static/loader.gif" alt="Loading GIF">
+    <br>
+    <br>
+    <p>Loading...</p>
+</div>
+
+<h3 class="content">Common formats</h3>
+
+<div id="the-content-div">
+    <div class="row">
+        <form enctype=multipart/form-data action={{url_for('get_formats')}} method="POST">
+            <div class="column">
+                <h4>Out</h4>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input type="radio" class="btn-check" name="btn-out" id="blenderout" value="blenderout" required>
+                        <label class="btn btn-secondary btn-sm custom" for="blenderout">Blender</label>
+                        <input type="radio" class="btn-check" name="btn-out" id="infraworksout" value="infraworksout">
+                        <label class="btn btn-secondary btn-sm custom" for="infraworksout">Infraworks</label>
+                        <input type="radio" class="btn-check" name="btn-out" id="qgisout" value="qgisout">
+                        <label class="btn btn-secondary btn-sm custom" for="qgisout">QGIS</label>
+                        <input type="radio" class="btn-check" name="btn-out" id="rhinoout" value="rhinoout">
+                        <label class="btn btn-secondary btn-sm custom" for="rhinoout">Rhino</label>
+                        <input type="radio" class="btn-check" name="btn-out" id="terrascanout" value="terrascanout">
+                        <label class="btn btn-secondary btn-sm custom" for="terrascanout">Terrascan</label>
+                        <input type="radio" class="btn-check" name="btn-out" id="unityout" value="unityout">
+                        <label class="btn btn-secondary btn-sm custom" for="unityout">Unity</label>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <p>Compatible formats are:</p>
+                <p>{{ text | safe }}</p>
+            </div>
+            <div class="column">
+                <h4>In</h4>
+                <div class="flex-container">
+                    <div class="form-group">
+                        <input type="radio" class="btn-check" name="btn-in" id="blenderin" value="blenderin" required>
+                        <label class="btn btn-secondary btn-sm custom" for="blenderin">Blender</label>
+                        <input type="radio" class="btn-check" name="btn-in" id="infraworksin" value="infraworksin">
+                        <label class="btn btn-secondary btn-sm custom" for="infraworksin">Infraworks</label>
+                        <input type="radio" class="btn-check" name="btn-in" id="qgisin" value="qgisin">
+                        <label class="btn btn-secondary btn-sm custom" for="qgisin">QGIS</label>
+                        <input type="radio" class="btn-check" name="btn-in" id="rhinoin" value="rhinoin">
+                        <label class="btn btn-secondary btn-sm custom" for="rhinoin">Rhino</label>
+                        <input type="radio" class="btn-check" name="btn-in" id="terrascanin" value="terrascanin">
+                        <label class="btn btn-secondary btn-sm custom" for="terrascanin">Terrascan</label>
+                        <input type="radio" class="btn-check" name="btn-in" id="unityin" value="unityin">
+                        <label class="btn btn-secondary btn-sm custom" for="unityin">Unity</label>
+                    </div>  
+                </div>
+            </div>
+            <div class="content">
+                <input type="submit" value="Submit" class="btn btn-primary" id="submit-button">
+            </div>
+        </form>
+        <div>
+            <p>NEXT</p>
+            <ul>
+                <li>Add all softwares</li>
+                <li>Make file format clickable and give more informations about what is does</li>
+                <li>Tab with all file formats and description</li>
+                <li>Finish CSS</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        // Show loading gif/text when submitting form
+
+        $('#submit-button').click(function() {
+            if ($('form')[0].checkValidity()) {
+                $('#the-loading-div').show();
+                $('#the-content-div').hide(); 
+            }
+        });
+    });
+</script>
+{% endblock %}
