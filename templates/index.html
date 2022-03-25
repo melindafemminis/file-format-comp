@@ -22,18 +22,14 @@
                 <h4>Out</h4>
                 <div class="flex-container">
                     <div class="form-group">
-                        <input type="radio" class="btn-check" name="btn-out" id="blenderout" value="blenderout" required>
-                        <label class="btn btn-secondary btn-sm custom" for="blenderout">Blender</label>
-                        <input type="radio" class="btn-check" name="btn-out" id="infraworksout" value="infraworksout">
-                        <label class="btn btn-secondary btn-sm custom" for="infraworksout">Infraworks</label>
-                        <input type="radio" class="btn-check" name="btn-out" id="qgisout" value="qgisout">
-                        <label class="btn btn-secondary btn-sm custom" for="qgisout">QGIS</label>
-                        <input type="radio" class="btn-check" name="btn-out" id="rhinoout" value="rhinoout">
-                        <label class="btn btn-secondary btn-sm custom" for="rhinoout">Rhino</label>
-                        <input type="radio" class="btn-check" name="btn-out" id="terrascanout" value="terrascanout">
-                        <label class="btn btn-secondary btn-sm custom" for="terrascanout">Terrascan</label>
-                        <input type="radio" class="btn-check" name="btn-out" id="unityout" value="unityout">
-                        <label class="btn btn-secondary btn-sm custom" for="unityout">Unity</label>
+
+                        <!-- With Jinja, dynmically create one button per software. -->
+                        {% for button in buttons %}
+                        {% set list = [button, 'out'] %}
+                            <input type="radio" class="btn-check" name="btn-out" id={{ list|join('') }} value={{ list|join('') }}>
+                            <label class="btn btn-secondary btn-sm custom" for={{ list|join('') }}>{{ button }}</label>
+                        {% endfor %}
+
                     </div>
                 </div>
             </div>
@@ -45,18 +41,14 @@
                 <h4>In</h4>
                 <div class="flex-container">
                     <div class="form-group">
-                        <input type="radio" class="btn-check" name="btn-in" id="blenderin" value="blenderin" required>
-                        <label class="btn btn-secondary btn-sm custom" for="blenderin">Blender</label>
-                        <input type="radio" class="btn-check" name="btn-in" id="infraworksin" value="infraworksin">
-                        <label class="btn btn-secondary btn-sm custom" for="infraworksin">Infraworks</label>
-                        <input type="radio" class="btn-check" name="btn-in" id="qgisin" value="qgisin">
-                        <label class="btn btn-secondary btn-sm custom" for="qgisin">QGIS</label>
-                        <input type="radio" class="btn-check" name="btn-in" id="rhinoin" value="rhinoin">
-                        <label class="btn btn-secondary btn-sm custom" for="rhinoin">Rhino</label>
-                        <input type="radio" class="btn-check" name="btn-in" id="terrascanin" value="terrascanin">
-                        <label class="btn btn-secondary btn-sm custom" for="terrascanin">Terrascan</label>
-                        <input type="radio" class="btn-check" name="btn-in" id="unityin" value="unityin">
-                        <label class="btn btn-secondary btn-sm custom" for="unityin">Unity</label>
+
+                        <!-- With Jinja, dynmically create one button per software. -->
+                        {% for button in buttons %}
+                        {% set list = [button, 'in'] %}
+                            <input type="radio" class="btn-check" name="btn-in" id={{ list|join('') }} value={{ list|join('') }}>
+                            <label class="btn btn-secondary btn-sm custom" for={{ list|join('') }}>{{ button }}</label>
+                        {% endfor %}
+
                     </div>  
                 </div>
             </div>
@@ -68,6 +60,7 @@
             <p>NEXT</p>
             <ul>
                 <li>Add all softwares</li>
+                <li style="color: green;">Dynamically add buttons</li>
                 <li>Make file format clickable and give more informations about what is does</li>
                 <li>Tab with all file formats and description</li>
                 <li>Finish CSS</li>
