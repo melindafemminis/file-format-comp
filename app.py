@@ -39,7 +39,7 @@ def index():
 
 
     # Create a list with all the softwares that are in data.csv and save it
-    data = pd.read_csv("full_data.csv", sep=';')
+    data = pd.read_csv("data.csv", sep=';')
     df = pd.DataFrame(data)
     buttons = list() 
 
@@ -78,7 +78,7 @@ def get_formats():
         print(buttons)
 
         # Read CSV with file formats and get selected software file formats
-        data = pd.read_csv("full_data.csv", sep=';')
+        data = pd.read_csv("data.csv", sep=';')
         df = pd.DataFrame(data, columns=[soft_out, soft_in])
         output_formats = [x for x in df[soft_out].tolist() if isinstance(x, str)]
         input_formats = [x for x in df[soft_in].tolist() if isinstance(x, str)]
